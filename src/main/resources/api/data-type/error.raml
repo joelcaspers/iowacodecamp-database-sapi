@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+
+description: Represents a system error that will be passed down to the client on HTTP status codes
+properties:
+  error_code:
+    type: integer
+    required: false
+    example: 404
+  message:
+    type: string
+    required: false
+    example: This is an error

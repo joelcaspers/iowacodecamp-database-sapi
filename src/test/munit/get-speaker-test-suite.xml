@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="get-speaker-test-suite.xml" />
+	<munit:test name="get-speaker-success-test" description="Test" doc:id="92ab7940-8709-4a2b-bb0f-57220bd203bf" >
+		<munit:behavior >
+			<munit:set-event doc:name="Set Event" doc:id="30bdd896-f1fe-4d31-bdda-3b440f26cd7d" >
+				<munit:attributes value="#[{headers: {}, uriParams: {}, queryParams: {}}]" />
+
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="get-speaker" doc:id="7ec5295b-3f7f-48c4-9912-729fb5cd937b" name="get-speaker"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Payload matches" doc:id="9f7eb756-5d24-4045-8ee3-c997fd3a8795" expression="#[payload]" is="#[MunitTools::equalTo(readUrl('classpath://get-speaker/response.json', 'application/json'))]" message="Payload should match"/>
+		</munit:validation>
+	</munit:test>
+
+</mule>

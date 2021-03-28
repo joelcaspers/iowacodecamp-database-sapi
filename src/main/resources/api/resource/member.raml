@@ -1,0 +1,165 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent any single item
+description: A single <<type-name>>
+
+get:
+  description: Get a <<type-name>>
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<type-name>>
+          examples: 
+            success: <<success-example>>
+    400:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    401:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    403:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    404:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    422:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    500:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    501:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    503:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    504:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+put?:
+  description: Update a <<type-name>>
+  body:
+    application/json:
+      type: <<request-type-name>>
+      examples: 
+        error: <<request-example>>
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<type-name>>
+    201:
+      body:
+        application/json:
+          type: <<type-name>>
+    500:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+post?:
+  description: Post <<type-name>>
+  body:
+    application/json:
+      type: <<request-type-name>>
+      examples: 
+        request: <<request-example>>
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<type-name>>
+          examples: 
+            success: <<success-example>>
+    201:
+      body:
+        application/json:
+    400:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    401:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    403:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    404:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>        
+    500:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    501:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    503:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    504:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>          
+delete?:
+  description: Delete a <<type-name>>
+  responses:
+    204:
+    404:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>

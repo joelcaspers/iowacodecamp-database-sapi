@@ -1,0 +1,41 @@
+#%RAML 1.0
+title: iowacodecamp-database-sapi
+version: v1
+description: Manages IowaCodeCamp.com backend data store
+baseUri: /sapi/iowacodecamp-database/{version}
+
+protocols: [ HTTPS ]
+
+mediaType: [ application/json ]
+
+types:
+  Error: !include data-type/error.raml
+  Session: !include data-type/session.raml
+  Speaker: !include data-type/speaker.raml
+
+resourceTypes: 
+  collection: !include resource/collection.raml
+  member: !include resource/member.raml
+  
+/sessions:
+  description: Sessions collection
+  type:
+    collection:
+      type-name: Session  
+      success-example-collection: !include example/sessions.raml
+      error-type-name: Error
+      errors-example: !include example/error.raml
+  get:  
+
+/speaker/{speaker_id}:
+  description: Represents a speaker for a session
+  type: 
+    member:
+      type-name: Speaker
+      error-type-name: Error
+      success-example: !include example/speaker.raml
+      errors-example: !include example/error.raml
+  uriParameters:
+      speaker_id:
+        type: integer
+  get: 

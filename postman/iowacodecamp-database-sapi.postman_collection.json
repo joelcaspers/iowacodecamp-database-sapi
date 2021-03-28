@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "59819b40-993b-4104-98d9-328ccc0e708f",
+		"name": "iowacodecamp-database-sapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/sessions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "client_id",
+						"value": "6c0c6140031b41ad9422f1dea033eb10",
+						"type": "text"
+					},
+					{
+						"key": "client_secret",
+						"value": "01493d4b74De46EfBD8B5CD27c875894",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/sapi/iowacodecamp-database/v1/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"sapi",
+						"iowacodecamp-database",
+						"v1",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/speaker/{speaker_id}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "client_id",
+						"value": "6c0c6140031b41ad9422f1dea033eb10",
+						"type": "text"
+					},
+					{
+						"key": "client_secret",
+						"value": "01493d4b74De46EfBD8B5CD27c875894",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/sapi/iowacodecamp-database/v1/speaker/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"sapi",
+						"iowacodecamp-database",
+						"v1",
+						"speaker",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

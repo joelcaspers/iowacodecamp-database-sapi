@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<global-property doc:name="Global Property"	doc:id="a636955f-3a77-4bb8-9d9e-41392e3bf5a2" name="api.manager.id"	value="15516630" doc:description="1234567890" />
+	<global-property doc:name="Global Property"	doc:id="115364cd-801a-4482-aa26-1e340f50063b" name="api.host" value="www.iowacodecamp.com" doc:description="www.iowacodecamp.com" />
+	<global-property doc:name="Global Property"	doc:id="7a4404d4-0d63-4b19-b340-65015d6001d9" name="api.port" value="443" doc:description="443" />
+</mule>

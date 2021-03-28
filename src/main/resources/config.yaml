@@ -1,0 +1,15 @@
+# Anypoint settings
+anypoint:
+  platform:
+    visualizer:
+      layer: Iowa Code Camp System API
+      tags: Database, System API, Backend
+
+# API and API Manager settings
+api:
+  host: '${api.host}'
+  port: '${api.port}'
+  protocol: HTTPS
+  manager:
+    id: '${api.manager.id}'
+    flowref: iowacodecamp-database-sapi-main

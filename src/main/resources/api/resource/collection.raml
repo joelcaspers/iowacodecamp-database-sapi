@@ -1,0 +1,139 @@
+#%RAML 1.0 ResourceType
+
+description: 
+  | 
+    Provides common functionality for dealing with collections of resources.
+get:
+  description: Returns a collection of <<type-name>>.
+  responses: 
+    200:
+      body:
+        application/json:
+          type: array
+          items: <<type-name>>
+          examples: 
+            success: <<success-example-collection>>
+    400:
+      body:
+        application/json:
+          examples: 
+            error: <<errors-example>>
+    401:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    403:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    404:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    422:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    500:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    501:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    503:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    504:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>          
+post?:
+  description: Creates a new <<type-name>>
+  body: 
+    application/json:
+      type: <<request-type-name>>
+      examples: 
+        success: <<request-example>>
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<response-type-name>>
+          examples: 
+            success: <<response-example>>
+    201:
+      description: Returns the <<type-name>> that was created.
+      headers: 
+        Location:
+      body:
+        application/json:
+          examples: 
+            message: <<resourcePathName | !singularize>> created successfully
+    400:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    401:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    403:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    404:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>        
+    500:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    501:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    503:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+    504:
+      body:
+        application/json:
+          type: <<error-type-name>>
+          examples: 
+            error: <<errors-example>>
+  
