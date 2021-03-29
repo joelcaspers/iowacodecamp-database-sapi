@@ -14,7 +14,16 @@
 				<munit:attributes value="#[{headers: {}, uriParams: {}, queryParams: {}}]" />
 
 			</munit:set-event>
-		</munit:behavior>
+			<munit-tools:mock-when doc:name="Mock when" doc:id="7454d034-a07f-46fb-ad08-76bbe233c47a" processor="db:select">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Get Speaker By Id" attributeName="doc:name" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[MunitTools::getResourceAsString('get-speaker/get-speaker-by-id-sql-response.json', 'UTF-8')]" mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		
+</munit:behavior>
 		<munit:execution >
 			<flow-ref doc:name="get-speaker" doc:id="7ec5295b-3f7f-48c4-9912-729fb5cd937b" name="get-speaker"/>
 		</munit:execution>

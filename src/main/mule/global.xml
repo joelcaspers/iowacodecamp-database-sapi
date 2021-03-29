@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns="http://www.mulesoft.org/schema/mule/core"
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
 	<configuration-properties doc:name="Configuration properties" doc:id="c499b30c-fdb6-4a44-84d7-15b755e0b4a0" file="config.yaml" />
 	<api-gateway:autodiscovery apiId="${api.manager.id}" doc:name="API Autodiscovery" doc:id="2247d464-119d-4f68-80e6-648159479a91" flowRef="${api.manager.flowref}" />
 	<configuration doc:name="Configuration" doc:id="83869a3d-e9a4-426a-af77-1c2d4445f134" defaultErrorHandler-ref="globalError_Handler" />
+	<db:config name="IowaCodeCamp_Database_Config" doc:name="Database Config" doc:id="899b52dc-cc06-4931-8249-89846c082e4d" >
+		<db:generic-connection url="${iowacodecamp.database.url}" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+	</db:config>
 	<error-handler name="globalError_Handler" doc:id="b594657e-fdc6-49eb-95a5-bf8fdb2fd9d2" >
 		<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="44888c3e-3d0e-4aee-968e-53f1d4d82940" type="ANY">
 			<set-variable value="500" doc:name="httpStatus == 500" doc:id="cc9024b6-3639-4b95-b50d-eea15ca077d9" variableName="httpStatus"/>

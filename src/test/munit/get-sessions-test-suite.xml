@@ -14,7 +14,16 @@
 				<munit:attributes value="#[{headers: {}, uriParams: {}, queryParams: {}}]" />
 
 			</munit:set-event>
-		</munit:behavior>
+			<munit-tools:mock-when doc:name="Mock Get All Sessions" doc:id="95124872-400c-4933-b24e-33c0a405cd9c" processor="db:select">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Get All Sessions" attributeName="doc:name" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[MunitTools::getResourceAsString('get-sessions/get-sessions-sql-response.json', 'UTF-8')]" mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		
+</munit:behavior>
 		<munit:execution >
 			<flow-ref doc:name="get-sessions" doc:id="7ec5295b-3f7f-48c4-9912-729fb5cd937b" name="get-sessions"/>
 		</munit:execution>

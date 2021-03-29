@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.iowacodecamp</groupId>
 	<artifactId>iowacodecamp-database-sapi</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<packaging>mule-application</packaging>
 	<name>iowacodecamp-database-sapi</name>
 	<description/>
@@ -21,10 +21,16 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-				<configuration>
-					<classifier>mule-application</classifier>
-				</configuration>
-			</plugin>
+		        <configuration>
+					<sharedLibraries>
+						<sharedLibrary>
+                            <groupId>com.microsoft.sqlserver</groupId>
+                            <artifactId>mssql-jdbc</artifactId>
+                        </sharedLibrary>
+                    </sharedLibraries>
+                    <classifier>mule-application</classifier>
+                </configuration>
+            </plugin>
 			<plugin>
 				<groupId>com.mulesoft.munit.tools</groupId>
 				<artifactId>munit-maven-plugin</artifactId>
@@ -75,6 +81,29 @@
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-apikit-module</artifactId>
             <version>1.5.0</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-db-connector</artifactId>
+            <version>1.5.5</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.4.1.jre8</version>
+        </dependency>
+		<dependency> 
+		    <groupId>com.microsoft.sqlserver</groupId> 
+		    <artifactId>sqljdbc_auth</artifactId> 
+		    <version>0.1</version> 
+		    <type>dll</type> 
+		</dependency>
+    	<dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-db-connector</artifactId>
+            <version>1.9.1</version>
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>

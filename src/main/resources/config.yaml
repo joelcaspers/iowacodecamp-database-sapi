@@ -13,3 +13,6 @@ api:
   manager:
     id: '${api.manager.id}'
     flowref: iowacodecamp-database-sapi-main
+iowacodecamp: 
+  database: 
+    url: '${iowacodecamp.database.url}'

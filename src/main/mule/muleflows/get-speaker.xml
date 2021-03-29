@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
 	<flow name="get-speaker" doc:id="b653b7f7-7d49-4c7b-b389-c743c75e7420" >
-		<ee:transform doc:name="Transform Message" doc:id="474126a1-b724-49a6-82a1-78a0b7e70c0c" >
-			<ee:variables >
-				<ee:set-variable variableName="speaker_id" ><![CDATA[attributes.uriParams.'speaker_id']]></ee:set-variable>
-			</ee:variables>
-		</ee:transform>
+		<db:select doc:name="Get Speaker By Id" doc:id="b06b4972-e948-4f14-92f0-8fe4abe584b6" config-ref="IowaCodeCamp_Database_Config">
+			<db:sql><![CDATA[${file::sql/speaker/get-speaker.sql}]]></db:sql>
+			<db:input-parameters ><![CDATA[#[%dw 2.0
+--- 
+{
+	SpeakerId: attributes.uriParams.'speaker_id'
+}]]]></db:input-parameters>
+		</db:select>
 		<ee:transform doc:name="Transform Message" doc:id="a5818570-1dce-4203-ad94-d60592b76f44" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 			<ee:message>
 				<ee:set-payload><![CDATA[%dw 2.0
-output application/json
+output application/json skipNullOn="everywhere"
+var speakers = payload default []
+var speaker = speakers[0] default null
 ---
 {
-  event_id: 1,
-  participant_id: 1,
-  image_url: "https://cdn.shopify.com/s/files/1/0275/1610/8874/files/Richmond_8_b.JPG?v=1604140292",
-  speaker_bio: "Joel's Bio here",
-  speaker_url: "https://caspershotdogs.com/",
-  twitter_handle: "@CaspersJ"
+  event_id: speaker.EventId,
+  participant_id: speaker.ParticipantId,
+  image_url: speaker.ImageURL,
+  speaker_bio: speaker.SpeakerBio,
+  speaker_url: speaker.SpeakerURL,
+  twitter_handle: speaker.TwitterHandle, 
+  name: speaker.Name, 
+  email: speaker.Email
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
