@@ -5,7 +5,7 @@
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
-	<flow name="get-speaker" doc:id="b653b7f7-7d49-4c7b-b389-c743c75e7420" >
+	<sub-flow name="get-speaker" doc:id="b653b7f7-7d49-4c7b-b389-c743c75e7420" >
 		<db:select doc:name="Get Speaker By Id" doc:id="b06b4972-e948-4f14-92f0-8fe4abe584b6" config-ref="IowaCodeCamp_Database_Config">
 			<db:sql><![CDATA[${file::sql/speaker/get-speaker.sql}]]></db:sql>
 			<db:input-parameters ><![CDATA[#[%dw 2.0
@@ -14,24 +14,10 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
 	SpeakerId: attributes.uriParams.'speaker_id'
 }]]]></db:input-parameters>
 		</db:select>
-		<ee:transform doc:name="Transform Message" doc:id="a5818570-1dce-4203-ad94-d60592b76f44" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+		<ee:transform doc:name="Transform Speaker" doc:id="a5818570-1dce-4203-ad94-d60592b76f44" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 			<ee:message>
-				<ee:set-payload><![CDATA[%dw 2.0
-output application/json skipNullOn="everywhere"
-var speakers = payload default []
-var speaker = speakers[0] default null
----
-{
-  event_id: speaker.EventId,
-  participant_id: speaker.ParticipantId,
-  image_url: speaker.ImageURL,
-  speaker_bio: speaker.SpeakerBio,
-  speaker_url: speaker.SpeakerURL,
-  twitter_handle: speaker.TwitterHandle, 
-  name: speaker.Name, 
-  email: speaker.Email
-}]]></ee:set-payload>
+				<ee:set-payload resource="dw/get-speaker/transform-speaker.dwl" />
 			</ee:message>
 		</ee:transform>
-	</flow>
+	</sub-flow>
 </mule>

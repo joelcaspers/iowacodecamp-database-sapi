@@ -4,5 +4,88 @@
     <types:type name="attributes" format="java">
       <types:shape format="java" element="org.mule.extension.http.api.HttpRequestAttributes"/>
     </types:type>
+    <types:type name="database-speaker" format="json">
+      <types:shape format="weave" example="examples/get-speaker-by-id-sql-response.json"><![CDATA[%dw 2.0
+
+type database_speaker = Array<{|  ParticipantId: Number {"typeId": "int"},   EventId: Number {"typeId": "int"},   TwitterHandle: String,   SpeakerBio: String,   ImageURL: String,   Name: String,   SpeakerURL: String,   Email: String|}> {"example": "[{\\\"ParticipantId\\\":1,\\\"EventId\\\":1,\\\"TwitterHandle\\\":\\\"@CaspersJ\\\",\\\"SpeakerBio\\\":\\\"Joel's Bio here\\\",\\\"ImageURL\\\":\\\"\\/Images\\/me.jpg\\\",\\\"Name\\\":\\\"Joel Caspers\\\",\\\"SpeakerURL\\\":\\\"http:\\/\\/www.joelcaspers.com\\\",\\\"Email\\\":\\\"joel.caspers@gmail.com\\\"},{\\\"ParticipantId\\\":1,\\\"EventId\\\":2,\\\"TwitterHandle\\\":\\\"@CaspersJ\\\",\\\"SpeakerBio\\\":\\\"Joel's Bio here\\\",\\\"ImageURL\\\":\\\"\\/Images\\/me.jpg\\\",\\\"Name\\\":\\\"Joel Caspers\\\",\\\"SpeakerURL\\\":\\\"http:\\/\\/www.joelcaspers.com\\\",\\\"Email\\\":\\\"joel.caspers@gmail.com\\\"}]"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="speaker" format="json">
+      <types:shape format="weave" example="examples/response.json"><![CDATA[%dw 2.0
+
+type speaker = {|
+  event_id: Number {"typeId": "int"}, 
+  participant_id: Number {"typeId": "int"}, 
+  image_url: String, 
+  speaker_bio: String, 
+  speaker_url: String, 
+  twitter_handle: String, 
+  name: String, 
+  email: String
+|} {"example": "{\\\"event_id\\\":1,\\\"participant_id\\\":1,\\\"image_url\\\":\\\"\\/Images\\/me.jpg\\\",\\\"speaker_bio\\\":\\\"Joel's Bio here\\\",\\\"speaker_url\\\":\\\"http:\\/\\/www.joelcaspers.com\\\",\\\"twitter_handle\\\":\\\"@CaspersJ\\\",\\\"name\\\":\\\"Joel Caspers\\\",\\\"email\\\":\\\"joel.caspers@gmail.com\\\"}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="database-sessions" format="json">
+      <types:shape format="weave" example="examples/get-sessions-sql-response-1.json"><![CDATA[%dw 2.0
+
+type database_sessions = Array<{|  Date: String,   EventId: Number {"typeId": "int"},   EventSlotName: String,   SessionName: String,   Level: String,   LocationId: Number {"typeId": "int"},   Description: String,   SpeakerId: Number {"typeId": "int"},   Id: Number {"typeId": "int"},   EventName: String,   EventSlotId: Number {"typeId": "int"}|}> {"example": "[{\\\"Date\\\":\\\"2014-11-22T00:00:00\\\",\\\"EventId\\\":1,\\\"EventSlotName\\\":\\\"9:00 AM - 10:15 AM\\\",\\\"SessionName\\\":\\\"Example Session Name\\\",\\\"Level\\\":\\\"100\\\",\\\"LocationId\\\":1,\\\"Description\\\":\\\"This is an example description for a session.\\\",\\\"SpeakerId\\\":1,\\\"Id\\\":1,\\\"EventName\\\":\\\"Iowa Code Camp Sessions\\\",\\\"EventSlotId\\\":1},{\\\"Date\\\":\\\"2014-11-22T00:00:00\\\",\\\"EventId\\\":1,\\\"EventSlotName\\\":\\\"10:30 AM - 11:45 AM\\\",\\\"SessionName\\\":\\\"Angular JS Overview - A Super long session title name                         whats up with that?\\\",\\\"Level\\\":\\\"100\\\",\\\"LocationId\\\":1,\\\"Description\\\":\\\"Basic overview of the Angular JS Framework\\\",\\\"SpeakerId\\\":1,\\\"Id\\\":2,\\\"EventName\\\":\\\"Iowa Code Camp Sessions\\\",\\\"EventSlotId\\\":2},{\\\"Date\\\":\\\"2014-11-22T00:00:00\\\",\\\"EventId\\\":1,\\\"EventSlotName\\\":\\\"1:00 PM - 2:15 PM\\\",\\\"SessionName\\\":\\\"Auto Layout in iOS\\\",\\\"Level\\\":\\\"200\\\",\\\"LocationId\\\":2,\\\"Description\\\":\\\"With increasing number of device sizes Apple now supports the usage of auto layout is necessary. See how to leverage auto layout in your presentation layer.\\\",\\\"SpeakerId\\\":1,\\\"Id\\\":3,\\\"EventName\\\":\\\"Iowa Code Camp Sessions\\\",\\\"EventSlotId\\\":3},{\\\"Date\\\":\\\"2014-11-22T00:00:00\\\",\\\"EventId\\\":1,\\\"EventSlotName\\\":\\\"2:30 PM - 3:45 PM\\\",\\\"SessionName\\\":\\\"iOS MVC\\\",\\\"Level\\\":\\\"200\\\",\\\"LocationId\\\":3,\\\"Description\\\":\\\"Discussion and examples of MVC and application resource organization\\\",\\\"SpeakerId\\\":1,\\\"Id\\\":4,\\\"EventName\\\":\\\"Iowa Code Camp Sessions\\\",\\\"EventSlotId\\\":4},{\\\"Date\\\":\\\"2014-11-22T00:00:00\\\",\\\"EventId\\\":1,\\\"EventSlotName\\\":\\\"4:30 PM - 5:30 PM\\\",\\\"SessionName\\\":\\\"Angular JS Directives\\\",\\\"Level\\\":\\\"200\\\",\\\"LocationId\\\":4,\\\"Description\\\":\\\"One of the difficult things to manage and scale is behavior related to DOM elements. See how Angular JS allows you to separate behavior into cohesive objects that can be easily applied to DOM elements.\\\",\\\"SpeakerId\\\":1,\\\"Id\\\":5,\\\"EventName\\\":\\\"Iowa Code Camp Sessions\\\",\\\"EventSlotId\\\":5},{\\\"Date\\\":\\\"2014-11-22T00:00:00\\\",\\\"EventId\\\":1,\\\"EventSlotName\\\":\\\"10:30 AM - 11:45 AM\\\",\\\"SessionName\\\":\\\"Morning Session\\\",\\\"Level\\\":\\\"300\\\",\\\"LocationId\\\":2,\\\"Description\\\":\\\"This is a morning session\\\",\\\"SpeakerId\\\":2,\\\"Id\\\":7,\\\"EventName\\\":\\\"Iowa Code Camp Sessions\\\",\\\"EventSlotId\\\":2}]"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="sessions" format="json">
+      <types:shape format="weave" example="examples/response-2.json"><![CDATA[%dw 2.0
+
+type sessions = Array<{|  id: Number {"typeId": "int"},   session_description: String,   speaker_id: Number {"typeId": "int"},   level: String,   location_id: Number {"typeId": "int"},   event_slot_id: Number {"typeId": "int"},   event_slot_name: String|}> {"example": "[{\\\"id\\\":1,\\\"session_description\\\":\\\"This is an example description for a session.\\\",\\\"speaker_id\\\":1,\\\"level\\\":\\\"100\\\",\\\"location_id\\\":1,\\\"event_slot_id\\\":1,\\\"event_slot_name\\\":\\\"9:00 AM - 10:15 AM\\\"},{\\\"id\\\":2,\\\"session_description\\\":\\\"Basic overview of the Angular JS Framework\\\",\\\"speaker_id\\\":1,\\\"level\\\":\\\"100\\\",\\\"location_id\\\":1,\\\"event_slot_id\\\":2,\\\"event_slot_name\\\":\\\"10:30 AM - 11:45 AM\\\"},{\\\"id\\\":3,\\\"session_description\\\":\\\"With increasing number of device sizes Apple now supports the usage of auto layout is necessary. See how to leverage auto layout in your presentation layer.\\\",\\\"speaker_id\\\":1,\\\"level\\\":\\\"200\\\",\\\"location_id\\\":2,\\\"event_slot_id\\\":3,\\\"event_slot_name\\\":\\\"1:00 PM - 2:15 PM\\\"},{\\\"id\\\":4,\\\"session_description\\\":\\\"Discussion and examples of MVC and application resource organization\\\",\\\"speaker_id\\\":1,\\\"level\\\":\\\"200\\\",\\\"location_id\\\":3,\\\"event_slot_id\\\":4,\\\"event_slot_name\\\":\\\"2:30 PM - 3:45 PM\\\"},{\\\"id\\\":5,\\\"session_description\\\":\\\"One of the difficult things to manage and scale is behavior related to DOM elements. See how Angular JS allows you to separate behavior into cohesive objects that can be easily applied to DOM elements.\\\",\\\"speaker_id\\\":1,\\\"level\\\":\\\"200\\\",\\\"location_id\\\":4,\\\"event_slot_id\\\":5,\\\"event_slot_name\\\":\\\"4:30 PM - 5:30 PM\\\"},{\\\"id\\\":7,\\\"session_description\\\":\\\"This is a morning session\\\",\\\"speaker_id\\\":2,\\\"level\\\":\\\"300\\\",\\\"location_id\\\":2,\\\"event_slot_id\\\":2,\\\"event_slot_name\\\":\\\"10:30 AM - 11:45 AM\\\"}]"}
+
+]]></types:shape>
+    </types:type>
   </types:catalog>
+  <types:enrichment select="#b06b4972-e948-4f14-92f0-8fe4abe584b6">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:attributes type="attributes"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="database-speaker"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#a5818570-1dce-4203-ad94-d60592b76f44">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:attributes type="attributes"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="speaker"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#686ba152-c487-486d-9737-14e4a72d7fb8">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="database-sessions"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#0d5914f2-71e3-41a9-9ca1-a196d15c5d8f">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="sessions"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
 </types:mule>

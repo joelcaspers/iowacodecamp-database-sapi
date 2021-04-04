@@ -5,26 +5,14 @@
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
-	<flow name="get-sessions" doc:id="56c0c830-5308-4bcc-acf5-34d8a72cbce5" >
+	<sub-flow name="get-sessions" doc:id="56c0c830-5308-4bcc-acf5-34d8a72cbce5" >
 		<db:select doc:name="Get All Sessions" doc:id="686ba152-c487-486d-9737-14e4a72d7fb8" config-ref="IowaCodeCamp_Database_Config">
 			<db:sql ><![CDATA[${file::sql/sessions/get-sessions.sql}]]></db:sql>
 		</db:select>
-		<ee:transform doc:name="Transform Message" doc:id="0d5914f2-71e3-41a9-9ca1-a196d15c5d8f" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd" >
+		<ee:transform doc:name="Transform Sessions" doc:id="0d5914f2-71e3-41a9-9ca1-a196d15c5d8f" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd" >
 			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
-output application/json skipNullOn="everywhere"
----
-(payload default []) map ((session) -> {
-	id: session.Id,
-	name: session.Name, 
-	session_description: session.Description, 
-	speaker_id: session.SpeakerId, 
-	level: session.Level, 
-	location_id: session.LocationId, 
-	event_slot_id: session.EventSlotId, 
-	event_slot_name: session.EventSlotName
-})]]></ee:set-payload>
+				<ee:set-payload resource="dw/get-sessions/transform-sessions.dwl" />
 			</ee:message>
 		</ee:transform>
-	</flow>
+	</sub-flow>
 </mule>

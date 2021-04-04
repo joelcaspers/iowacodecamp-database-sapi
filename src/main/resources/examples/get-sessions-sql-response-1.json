@@ -1,0 +1,80 @@
+[
+  {
+    "Date": "2014-11-22T00:00:00",
+    "EventId": 1,
+    "EventSlotName": "9:00 AM - 10:15 AM",
+    "SessionName": "Example Session Name",
+    "Level": "100",
+    "LocationId": 1,
+    "Description": "This is an example description for a session.",
+    "SpeakerId": 1,
+    "Id": 1,
+    "EventName": "Iowa Code Camp Sessions",
+    "EventSlotId": 1
+  },
+  {
+    "Date": "2014-11-22T00:00:00",
+    "EventId": 1,
+    "EventSlotName": "10:30 AM - 11:45 AM",
+    "SessionName": "Angular JS Overview - A Super long session title name                         whats up with that?",
+    "Level": "100",
+    "LocationId": 1,
+    "Description": "Basic overview of the Angular JS Framework",
+    "SpeakerId": 1,
+    "Id": 2,
+    "EventName": "Iowa Code Camp Sessions",
+    "EventSlotId": 2
+  },
+  {
+    "Date": "2014-11-22T00:00:00",
+    "EventId": 1,
+    "EventSlotName": "1:00 PM - 2:15 PM",
+    "SessionName": "Auto Layout in iOS",
+    "Level": "200",
+    "LocationId": 2,
+    "Description": "With increasing number of device sizes Apple now supports the usage of auto layout is necessary. See how to leverage auto layout in your presentation layer.",
+    "SpeakerId": 1,
+    "Id": 3,
+    "EventName": "Iowa Code Camp Sessions",
+    "EventSlotId": 3
+  },
+  {
+    "Date": "2014-11-22T00:00:00",
+    "EventId": 1,
+    "EventSlotName": "2:30 PM - 3:45 PM",
+    "SessionName": "iOS MVC",
+    "Level": "200",
+    "LocationId": 3,
+    "Description": "Discussion and examples of MVC and application resource organization",
+    "SpeakerId": 1,
+    "Id": 4,
+    "EventName": "Iowa Code Camp Sessions",
+    "EventSlotId": 4
+  },
+  {
+    "Date": "2014-11-22T00:00:00",
+    "EventId": 1,
+    "EventSlotName": "4:30 PM - 5:30 PM",
+    "SessionName": "Angular JS Directives",
+    "Level": "200",
+    "LocationId": 4,
+    "Description": "One of the difficult things to manage and scale is behavior related to DOM elements. See how Angular JS allows you to separate behavior into cohesive objects that can be easily applied to DOM elements.",
+    "SpeakerId": 1,
+    "Id": 5,
+    "EventName": "Iowa Code Camp Sessions",
+    "EventSlotId": 5
+  },
+  {
+    "Date": "2014-11-22T00:00:00",
+    "EventId": 1,
+    "EventSlotName": "10:30 AM - 11:45 AM",
+    "SessionName": "Morning Session",
+    "Level": "300",
+    "LocationId": 2,
+    "Description": "This is a morning session",
+    "SpeakerId": 2,
+    "Id": 7,
+    "EventName": "Iowa Code Camp Sessions",
+    "EventSlotId": 2
+  }
+]

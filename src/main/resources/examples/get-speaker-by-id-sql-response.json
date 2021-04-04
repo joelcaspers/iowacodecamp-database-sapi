@@ -1,0 +1,22 @@
+[
+  {
+    "ParticipantId": 1,
+    "EventId": 1,
+    "TwitterHandle": "@CaspersJ",
+    "SpeakerBio": "Joel's Bio here",
+    "ImageURL": "/Images/me.jpg",
+    "Name": "Joel Caspers",
+    "SpeakerURL": "http://www.joelcaspers.com",
+    "Email": "joel.caspers@gmail.com"
+  },
+  {
+    "ParticipantId": 1,
+    "EventId": 2,
+    "TwitterHandle": "@CaspersJ",
+    "SpeakerBio": "Joel's Bio here",
+    "ImageURL": "/Images/me.jpg",
+    "Name": "Joel Caspers",
+    "SpeakerURL": "http://www.joelcaspers.com",
+    "Email": "joel.caspers@gmail.com"
+  }
+]
