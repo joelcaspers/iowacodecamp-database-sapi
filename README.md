@@ -4,7 +4,7 @@
 
 This application is setup with a basic set of initial services intended facilitate a realistic example of exercises we perform as developers at UFG (web development) and will be used for new hire and candidate interviews. It is based on the following problem posed to previous candidates to better understand their ability to be successful as a developer at UFG. 
 
-[The Code Camp Problem](https://github.com/joelcaspers/IowaCodeCampWebAPI/blob/master/TheCodeCampProblem.pdf)
+[The Code Camp Problem](https://github.com/joelcaspers/iowacodecamp-database-sapi/blob/master/TheCodeCampProblem.pdf)
 
 ### Getting Started ###
 
