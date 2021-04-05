@@ -41,6 +41,8 @@ Enable Named Pipes and restart SQL Server Service: TODO graphics
 
 Mule API connection string configuration reference and setup of integrated authentication to the database https://help.mulesoft.com/s/article/How-to-use-Windows-Authentication-in-Database-Connector-with-Microsoft-SQL-Server-in-Mule4 - this has already been configured in the application, but you will need to download the referenced SQL .dll dependency and follow the instructions to copy it to your JDK folder (see Anypoint Studio properties to find the bundled JDK installed with Anypoint Studio). 
 
+Replace the global-properties.xml iowacodecamp.database.url property value for the connection string 'instance' attribute with your own computer instance name, for example '{CPUNAME\SQLEXPRESS;'
+
 #### Anypoint Platform ####
 TODO Design Center Edits/import into the application. 
 
