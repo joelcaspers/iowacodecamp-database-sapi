@@ -22,8 +22,6 @@ Install SQL Server Management Studio https://docs.microsoft.com/en-us/sql/ssms/d
 
 Install Postman https://www.postman.com/downloads/
 
-[Install Visual Studio](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2019)
-
 
 #### Database Setup #### 
 
